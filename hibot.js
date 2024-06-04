@@ -1,6 +1,6 @@
 /*const discord = require('discord.js');
 const client = new discord.Client({ intents: [] });*/
-const fs = require('fs');
+require('dotenv').config();
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [ 
   GatewayIntentBits.DirectMessages,
@@ -8,7 +8,8 @@ const client = new Client({ intents: [
   GatewayIntentBits.GuildBans,
   GatewayIntentBits.GuildMessages,
   GatewayIntentBits.MessageContent,] });
-const token = fs.readFileSync("token.txt")
+
+const token = process.env.DISCORD_TOKEN
 
 client.login(token.toString()); // login the bot with your token.
 
