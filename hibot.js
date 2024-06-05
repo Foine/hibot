@@ -13,18 +13,24 @@ const token = process.env.DISCORD_TOKEN
 
 client.login(token.toString()); // login the bot with your token.
 
+const laMessages = {
+  'mv': 'Je le trouve pas drôle'
+};
+
 client.on('messageCreate', message => { // This is where we will handle all message events. Aka, the commands that will trigger the bot.
  
-  let lsMessage = message.content.toLowerCase();
+  for (const [key, value] of Object.entries(laMessages)) {
+    let lsMessage = message.content.toLowerCase();
     if ( 
-      lsMessage.includes(' mv ') || 
-      lsMessage.endsWith(' mv') || 
-      lsMessage.startsWith('mv ') ||
-      lsMessage == 'mv'
+      lsMessage.includes(' ' + key + ' ') || 
+      lsMessage.endsWith(' ' + key) || 
+      lsMessage.startsWith(key + ' ') ||
+      lsMessage == key
     )
     {
-        message.channel.send('Je le trouve pas drôle');
+        message.channel.send(value);
     }
+  }
  
 });
 
