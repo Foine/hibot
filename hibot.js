@@ -15,7 +15,8 @@ client.login(token.toString()); // login the bot with your token.
 
 client.on('messageCreate', message => { // This is where we will handle all message events. Aka, the commands that will trigger the bot.
  
-    if ( message.content.toLowerCase().includes('mv') )
+  let lsMessage = message.content.toLowerCase();
+    if ( lsMessage.includes(' mv ') || lsMessage.endsWith(' mv') || lsMessage.startsWith('mv ') )
     {
         message.channel.send('Je le trouve pas drôle');
     }
