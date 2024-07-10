@@ -6,6 +6,7 @@ const client = new Client({ intents: [
   GatewayIntentBits.DirectMessages,
   GatewayIntentBits.Guilds,
   GatewayIntentBits.GuildBans,
+  GatewayIntentBits.GuildMembers,
   GatewayIntentBits.GuildMessages,
   GatewayIntentBits.MessageContent,] });
 
@@ -29,7 +30,7 @@ client.on('messageCreate', message => { // This is where we will handle all mess
       lsMessage == key
     )
     {
-      value = value.replace('{author}', message.author.username.toUpperCase());
+      value = value.replace('{author}', message.author.displayName.toUpperCase());
       message.channel.send(value);
     }
   }
