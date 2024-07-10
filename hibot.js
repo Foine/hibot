@@ -15,12 +15,12 @@ client.login(token.toString()); // login the bot with your token.
 
 const laMessages = {
   'mv': 'Je le trouve pas drôle',
-  'steam deck': 'OUI ! ON SAIT __author__ ! Le Steam De-gnagnagna !'
+  'steam deck': 'OUI ! ON SAIT {author} ! Le Steam De-gnagnagna !'
 };
 
 client.on('messageCreate', message => { // This is where we will handle all message events. Aka, the commands that will trigger the bot.
  
-  for (const [key, value] of Object.entries(laMessages)) {
+  for (let [key, value] of Object.entries(laMessages)) {
     let lsMessage = message.content.toLowerCase();
     if ( 
       lsMessage.includes(' ' + key + ' ') || 
@@ -29,7 +29,7 @@ client.on('messageCreate', message => { // This is where we will handle all mess
       lsMessage == key
     )
     {
-      value = value.replace('__author__', message.author.username.toUpperCase());
+      value = value.replace('{author}', message.author.username.toUpperCase());
       message.channel.send(value);
     }
   }
