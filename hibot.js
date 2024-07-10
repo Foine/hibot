@@ -14,7 +14,8 @@ const token = process.env.DISCORD_TOKEN
 client.login(token.toString()); // login the bot with your token.
 
 const laMessages = {
-  'mv': 'Je le trouve pas drôle'
+  'mv': 'Je le trouve pas drôle',
+  'steam deck': 'OUI ! ON SAIT FOINE ! Le Steam Deck gnagnagna !'
 };
 
 client.on('messageCreate', message => { // This is where we will handle all message events. Aka, the commands that will trigger the bot.
