@@ -15,7 +15,7 @@ client.login(token.toString()); // login the bot with your token.
 
 const laMessages = {
   'mv': 'Je le trouve pas drôle',
-  'steam deck': 'OUI ! ON SAIT FOINE ! Le Steam De-gnagnagna !'
+  'steam deck': 'OUI ! ON SAIT __author__ ! Le Steam De-gnagnagna !'
 };
 
 client.on('messageCreate', message => { // This is where we will handle all message events. Aka, the commands that will trigger the bot.
@@ -29,7 +29,8 @@ client.on('messageCreate', message => { // This is where we will handle all mess
       lsMessage == key
     )
     {
-        message.channel.send(value);
+      value = value.replace('__author__', message.author.username.toUpperCase());
+      message.channel.send(value);
     }
   }
  
